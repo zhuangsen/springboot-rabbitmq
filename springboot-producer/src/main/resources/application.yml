@@ -1,0 +1,35 @@
+spring:
+  rabbitmq:
+    addresses: 47.104.189.193:5672
+    username: madison
+    password: zs1012
+    virtual-host: my_vhost
+#    connection-timeout: 15000
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
+  datasource:
+    url: jdbc:mysql://47.104.189.193:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: ab123456
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  http:
+    encoding:
+      charset: utf-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT-8
+    default-property-inclusion: non_null
+server:
+  port: 8001
+  servlet:
+    context-path: /
+mybatis:
+  type-aliases-package: com.sxw.springbootproducer
+  mapper-locations: classpath:com/sxw/springbootproducer/mapping/*.xml
+logging:
+  level:
+    tk:
+      mybatis: trace
