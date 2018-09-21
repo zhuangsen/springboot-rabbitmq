@@ -29,7 +29,7 @@ public class SpringbootProducerApplicationTests {
     @Test
     public void testSend1(){
         Order order = new Order();
-        order.setId(2018092103);
+        order.setId(2018092104);
         order.setName("测试订单1");
         order.setMessageId(System.currentTimeMillis()+"$"+UUID.randomUUID().toString());
         orderSender.send(order);
