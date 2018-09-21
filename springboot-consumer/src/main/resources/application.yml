@@ -16,8 +16,8 @@ spring:
         prefetch: 1
   datasource:
     url: jdbc:mysql://47.104.189.193:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
-    username: root
-    password: ab123456
+    username: madison
+    password: zs1012
     driverClassName: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   http:
