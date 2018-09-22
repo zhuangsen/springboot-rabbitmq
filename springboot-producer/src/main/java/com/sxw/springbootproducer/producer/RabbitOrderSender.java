@@ -24,6 +24,7 @@ public class RabbitOrderSender {
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {
             System.err.println("correlationData: " + correlationData);
             String messageId = correlationData.getId();
+            System.out.println(ack+":"+cause);
             if(ack){
                 //如果confirm返回成功 则进行更新
                 brokerMessageLogMapper.changeBrokerMessageLogStatus(messageId, Constants.ORDER_SEND_SUCCESS, new Date());

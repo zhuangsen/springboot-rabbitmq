@@ -14,6 +14,16 @@ spring:
         acknowledge-mode: manual
         max-concurrency: 10
         prefetch: 1
+      order:
+        queue:
+          name: order-queue
+          durable: true
+        exchange:
+          name: order-exchange
+          durable: true
+          type: topic
+          ignoreDeclarationExceptions: true
+        key: order.*
   datasource:
     url: jdbc:mysql://47.104.189.193:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
     username: madison
