@@ -15,17 +15,17 @@ import java.util.Map;
 public class RabbitReceiver {
     //配置监听的哪一个队列，同时在没有queue和exchange的情况下会去创建并建立绑定关系
     @RabbitListener(bindings = @QueueBinding(
-            value = @Queue(value = "${spring.rabbitmq.listener.order.queue.name}",durable = "${spring.rabbitmq.listener.order.queue.durable}"),
-            exchange = @Exchange(value="${spring.rabbitmq.listener.order.exchange.name}",durable = "${spring.rabbitmq.listener.order.exchange.durable}",
+            value = @Queue(value = "${spring.rabbitmq.listener.order.queue.name}", durable = "${spring.rabbitmq.listener.order.queue.durable}"),
+            exchange = @Exchange(value = "${spring.rabbitmq.listener.order.exchange.name}", durable = "${spring.rabbitmq.listener.order.exchange.durable}",
                     ignoreDeclarationExceptions = "${spring.rabbitmq.listener.order.exchange.ignoreDeclarationExceptions}",
                     type = "${spring.rabbitmq.listener.order.exchange.type}"), key = "${spring.rabbitmq.listener.order.key}"
-        )
+    )
     )
     @RabbitHandler//如果有消息过来，在消费的时候调用这个方法
-    public void onOrderMessage(@Payload Order order, @Headers Map<String,Object> headers, Channel channel) {
+    public void onOrderMessage(@Payload Order order, @Headers Map<String, Object> headers, Channel channel) {
         //消费者操作
         System.out.println("---------收到消息，开始消费---------");
-        System.out.println("消费端Order："+order.getId());
+        System.out.println("消费端Order：" + order.getId());
 
         try {
             /**
@@ -42,7 +42,7 @@ public class RabbitReceiver {
             boolean multiple = false;
 
             //ACK,确认一条消息已经被消费
-            channel.basicAck(deliveryTag,multiple);
+            channel.basicAck(deliveryTag, multiple);
         } catch (IOException e) {
             System.err.println(e);
             e.printStackTrace();

@@ -11,5 +11,11 @@
         <module name="springboot-producer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springboot-consumer" target="1.8" />
+      <module name="springboot-model" target="1.8" />
+      <module name="springboot-producer" target="1.8" />
+      <module name="springboot-rabbitmq" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
